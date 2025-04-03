@@ -9,7 +9,7 @@ namespace ProjetSauvegardeFichiers.Core
         /// <summary>
         /// Obtient le chemin complet du fichier incluant son nom
         /// </summary>
-        string CheminFichier { get; }
+        string NomFichier { get; }
 
         /// <summary>
         /// Obtient ou définit le contenu du fichier
@@ -20,6 +20,6 @@ namespace ProjetSauvegardeFichiers.Core
         /// Enregistre le fichier sur le système
         /// </summary>
         /// <returns>True si l'enregistrement a réussi, False sinon</returns>
-        bool Enregistrer();
+        bool Enregistrer(string extension);
     }
 }

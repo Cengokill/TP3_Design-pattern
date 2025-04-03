@@ -9,7 +9,7 @@ namespace ProjetSauvegardeFichiers.Core
     /// </summary>
     public class FichierTexte : IFichier
     {
-        public string CheminFichier { get; private set; }
+        public string NomFichier { get; private set; }
         public string Contenu { get; set; }
 
         /// <summary>
@@ -17,9 +17,9 @@ namespace ProjetSauvegardeFichiers.Core
         /// </summary>
         /// <param name="nom">Nom du fichier</param>
         /// <param name="contenu">Contenu du fichier</param>
-        public FichierTexte(string cheminFichier, string contenu)
+        public FichierTexte(string nomFichier, string contenu)
         {
-            CheminFichier = cheminFichier;
+            NomFichier = nomFichier;
             Contenu = contenu;
         }
 
@@ -27,16 +27,18 @@ namespace ProjetSauvegardeFichiers.Core
         /// Enregistre le contenu du fichier texte dans un fichier spécifié.
         /// </summary>
         /// <param name="cheminFichier">Le chemin complet du fichier où enregistrer le contenu.</param>
-        public virtual bool Enregistrer()  // virtual pour permettre l'override par les décorateurs
+        public virtual bool Enregistrer(string extension = ".txt")  // virtual pour permettre l'override par les décorateurs
         {
             try
             {
                 // Écrit le contenu dans le fichier.
-                using (StreamWriter sw = new StreamWriter(CheminFichier))
+                string chemin = Configuration.CheminFichier;
+                string separateur = Configuration.Separateur;
+                using (StreamWriter sw = new StreamWriter(chemin + separateur + extension))
                 {
                     sw.Write(Contenu);
                 }
-                Console.WriteLine($"Fichier texte enregistré avec succès à : {CheminFichier}");
+                Console.WriteLine($"Fichier texte enregistré avec succès à : {NomFichier}");
                 return true;
             }
             catch (Exception ex)

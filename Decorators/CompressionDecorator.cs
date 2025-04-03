@@ -17,9 +17,9 @@ public class CompressionDecorator : FichierTexte
     /// Initialise une nouvelle instance du décorateur de compression
     /// </summary>
     /// <param name="fichier">Le fichier à décorer</param>
-    public CompressionDecorator(FichierTexte fichier) : base(fichier.CheminFichier, fichier.Contenu) => Fichier = fichier;
+    public CompressionDecorator(FichierTexte fichier) : base(fichier.NomFichier, fichier.Contenu) => Fichier = fichier;
     
-    public string CheminFichier => Fichier.CheminFichier;
+    public string CheminFichier => Fichier.NomFichier;
     
     public string Contenu
     {
@@ -31,7 +31,7 @@ public class CompressionDecorator : FichierTexte
     /// Enregistre le fichier, en le compressant au préalable.
     /// </summary>
     /// <param name="cheminFichier">Le chemin où enregistrer le fichier compressé.</param>
-    public override bool Enregistrer()
+    public override bool Enregistrer(string extension = ".txt")
     {
         try
         {

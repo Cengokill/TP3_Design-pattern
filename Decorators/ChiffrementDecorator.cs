@@ -16,14 +16,14 @@ namespace ProjetSauvegardeFichiers.Decorators
         /// Initialise une nouvelle instance du décorateur de chiffrement.
         /// </summary>
         /// <param name="fichier">Le fichier à décorer.</param>
-        public ChiffrementDecorator(FichierTexte fichier) : base(fichier.CheminFichier, fichier.Contenu)
+        public ChiffrementDecorator(FichierTexte fichier) : base(fichier.NomFichier, fichier.Contenu)
             => Fichier = fichier;
 
         /// <summary>
         /// Enregistre le fichier après avoir chiffré son contenu.
         /// Le contenu chiffré est stocké dans l'objet décoré, puis l'enregistrement est délégué pour permettre la chainabilité.
         /// </summary>
-        public override bool Enregistrer()
+        public override bool Enregistrer(string extension = ".txt")
         {
             try
             {

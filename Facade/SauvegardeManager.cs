@@ -33,13 +33,13 @@ namespace ProjetSauvegardeFichiers.Facade
                 fichierDecore = new CompressionDecorator(fichierDecore);
                 // 3. Enregistrement du fichier, avec une compression.
                 EstCompresse = fichierDecore.Enregistrer();
-                if(EstCompresse)
+                if(!EstCompresse)
                     Console.WriteLine("Erreur lors de l'enregistrement du fichier compressé.");
             }if (chiffrer){
                 fichierDecore = new ChiffrementDecorator(fichierDecore);
                 // 3. Enregistrement du fichier, avec un chiffrement.
                 EstChiffre = fichierDecore.Enregistrer();
-                if(EstChiffre)
+                if(!EstChiffre)
                     Console.WriteLine("Erreur lors de l'enregistrement du fichier chiffré.");
             }
 
@@ -56,15 +56,7 @@ namespace ProjetSauvegardeFichiers.Facade
                 Console.WriteLine("Erreur lors de l'enregistrement du fichier sans transformation.");
                 return false;
             }
-                
-            // 4. Retourne le résultat de l'enregistrement final.
-            if(!EstCompresse && !EstChiffre)
-            {
-                Console.WriteLine("Erreur lors de l'enregistrement du fichier sans transformation.");
-                return false;
-            }    
-            
-            
+            return true;
         }
     }
 }
