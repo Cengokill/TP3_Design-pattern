@@ -7,7 +7,7 @@ public static class Configuration
 
     static Configuration()
     {
-        CheminFichier = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\my_files");
         Separateur = Path.DirectorySeparatorChar.ToString();
+        CheminFichier = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $@"..{Separateur}..{Separateur}..{Separateur}my_files");
     }
 }
