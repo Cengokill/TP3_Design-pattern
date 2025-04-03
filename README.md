@@ -25,7 +25,7 @@ Le projet est structuré en plusieurs composants :
 ### Instructions d'exécution
 1. **Cloner le projet** :
    ```sh
-   git clone [https://github.com/votre-repo/sauvegarde-fichier.git](https://github.com/Cengokill/TP3_Design-pattern.git)
+   git clone https://github.com/Cengokill/TP3_Design-pattern.git
    cd sauvegarde-fichier
    ```
 2. **Compiler et exécuter** :
