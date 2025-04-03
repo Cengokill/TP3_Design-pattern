@@ -43,13 +43,6 @@ namespace ProjetSauvegardeFichiers.Facade
                     Console.WriteLine("Erreur lors de l'enregistrement du fichier chiffré.");
             }
 
-            // 3. Vérification des options de transformation.
-            // Si l'utilisateur a demandé la compression ou bien le chiffrement (ou)
-            if (!(EstCompresse && !EstChiffre) && (compresser || chiffrer))
-            {
-                return false;
-            }
-
             // 3. Enregistrement du fichier sans transformation.
             if (!fichierDecore.Enregistrer())
             {

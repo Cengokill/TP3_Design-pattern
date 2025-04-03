@@ -34,11 +34,20 @@ namespace ProjetSauvegardeFichiers.Core
                 // Écrit le contenu dans le fichier.
                 string chemin = Configuration.CheminFichier;
                 string separateur = Configuration.Separateur;
-                using (StreamWriter sw = new StreamWriter(chemin + separateur + extension))
+                string fullPath = Path.Combine(chemin, NomFichier);
+
+                // Ensure the directory exists
+                string? directoryPath = Path.GetDirectoryName(fullPath) ?? throw new InvalidOperationException("Le chemin du répertoire est invalide.");
+                if (!Directory.Exists(directoryPath))
+                {
+                    Directory.CreateDirectory(directoryPath);
+                }
+
+                using (StreamWriter sw = new StreamWriter(fullPath))
                 {
                     sw.Write(Contenu);
                 }
-                Console.WriteLine($"Fichier texte enregistré avec succès à : {NomFichier}");
+                Console.WriteLine($"Fichier texte enregistré avec succès à : {fullPath}");
                 return true;
             }
             catch (Exception ex)
