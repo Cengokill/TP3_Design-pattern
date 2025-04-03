@@ -37,9 +37,9 @@ public class CompressionDecorator : FichierTexte
         {
             // 1. Compresser le contenu en mémoire
             byte[] compressedData;
-            using (MemoryStream memoryStream = new MemoryStream())
+            using (MemoryStream memoryStream = new())
             {
-                using (GZipStream compressionStream = new GZipStream(memoryStream, CompressionMode.Compress))
+                using (GZipStream compressionStream = new(memoryStream, CompressionMode.Compress))
                 {
                     byte[] bytes = Encoding.UTF8.GetBytes(Contenu);
                     compressionStream.Write(bytes, 0, bytes.Length);

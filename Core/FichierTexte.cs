@@ -34,7 +34,7 @@ namespace ProjetSauvegardeFichiers.Core
                 // Écrit le contenu dans le fichier.
                 string chemin = Configuration.CheminFichier;
                 string separateur = Configuration.Separateur;
-                string fullPath = Path.Combine(chemin, NomFichier);
+                string fullPath = Path.Combine(chemin, NomFichier + extension);
 
                 // Ensure the directory exists
                 string? directoryPath = Path.GetDirectoryName(fullPath) ?? throw new InvalidOperationException("Le chemin du répertoire est invalide.");
@@ -43,7 +43,7 @@ namespace ProjetSauvegardeFichiers.Core
                     Directory.CreateDirectory(directoryPath);
                 }
 
-                using (StreamWriter sw = new StreamWriter(fullPath))
+                using (StreamWriter sw = new(fullPath))
                 {
                     sw.Write(Contenu);
                 }

@@ -13,42 +13,36 @@ namespace ProjetSauvegardeFichiers.Facade
         /// Sauvegarde un fichier texte en appliquant éventuellement la compression et/ou le chiffrement,
         /// puis en enregistrant le résultat.
         /// </summary>
-        /// <param name="cheminFichier">Chemin complet du fichier.</param>
+        /// <param name="nomFichier">Nom du fichier.</param>
         /// <param name="contenu">Contenu texte initial du fichier.</param>
         /// <param name="compresser">True pour appliquer la compression, false sinon.</param>
         /// <param name="chiffrer">True pour appliquer le chiffrement, false sinon.</param>
         /// <returns>True si l'enregistrement final a réussi, false sinon.</returns>
-        public bool SauvegarderFichier(string cheminFichier, string contenu, bool compresser, bool chiffrer)
+        public bool SauvegarderFichier(string nomFichier, string contenu, bool compresser, bool chiffrer)
         {
             // 1. Crée le fichier de base
-            FichierTexte fichier = new FichierTexte(cheminFichier, contenu);
+            FichierTexte fichier = new(nomFichier, contenu);
 
-            // 2. Application d'un décorateur en fonction de l'option choisie.
-            // Seule l'une des deux transformations (compression ou chiffrement) peut être appliquée.
+            // 2. Application des décorateurs en fonction des options choisies
             FichierTexte fichierDecore = fichier;
 
-            bool EstCompresse = false, EstChiffre = false;
-            
-            if (compresser){
+            if (compresser)
+            {
                 fichierDecore = new CompressionDecorator(fichierDecore);
-                // 3. Enregistrement du fichier, avec une compression.
-                EstCompresse = fichierDecore.Enregistrer();
-                if(!EstCompresse)
-                    Console.WriteLine("Erreur lors de l'enregistrement du fichier compressé.");
-            }if (chiffrer){
-                fichierDecore = new ChiffrementDecorator(fichierDecore);
-                // 3. Enregistrement du fichier, avec un chiffrement.
-                EstChiffre = fichierDecore.Enregistrer();
-                if(!EstChiffre)
-                    Console.WriteLine("Erreur lors de l'enregistrement du fichier chiffré.");
             }
 
-            // 3. Enregistrement du fichier sans transformation.
+            if (chiffrer)
+            {
+                fichierDecore = new ChiffrementDecorator(fichierDecore);
+            }
+
+            // 3. Enregistrement du fichier décoré (avec les transformations appliquées une seule fois)
             if (!fichierDecore.Enregistrer())
             {
-                Console.WriteLine("Erreur lors de l'enregistrement du fichier sans transformation.");
+                Console.WriteLine("Erreur lors de l'enregistrement du fichier.");
                 return false;
             }
+
             return true;
         }
     }
