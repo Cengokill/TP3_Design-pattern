@@ -1,0 +1,93 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio Code
+.vscode/
+.vscode/*
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Temporary files
+*.tmp
+*.temp
+~$*
+*.~*
+
+# Web server files
+iisexpress/
+wwwroot/
+
+# JetBrains Rider
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# DotNetTool
+**/.store/
+**/*.nupkg
+**/project.assets.json
+**/project.nuget.cache
+**/*.csproj.nuget.g.props
+**/*.csproj.nuget.g.targets
+
+# StyleCop
+StyleCopReport.xml
+
+# Files built by Visual Studio
+*.builds
+*.pidb
+*.svclog
+*.scc
+
+# Visual Studio 6 build log
+*.plg
+
+# Visual Studio 6 workspace options file
+*.opt
+
+# Visual Studio 6 auto-generated workspace file
+*.vbw
+
+# Visual Studio LightSwitch generated files
+GeneratedArtifacts/
+_Pvt_Extensions/
+ModelManifest.xml
+*.lspkg
+
+# Node.js
+node_modules/
+
+# Yarn
+.yarn/
+.yarnrc.yml
+
+# End of standard .NET .gitignore
